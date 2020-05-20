@@ -7,7 +7,7 @@ Window {
     visible: true
     minimumWidth: 386
     minimumHeight: 820
-    color: "#bbbbbb"
+    color: "#efedd0"
 
     property var selectedColorsArr: []
     property var triesTaken: 0
@@ -105,7 +105,6 @@ Window {
                  width: 20
                  radius: width
                  height: 50
-                 color: "#dddddd"
              }
          }
     }

@@ -8,7 +8,7 @@ Rectangle {
     height: width
     border.color: "black"
     border.width: 3
-    property var defaultColor: "#dddddd"
+    property var defaultColor: "#dfdba0"
     color: defaultColor
 
     Behavior on color{
@@ -21,11 +21,10 @@ Rectangle {
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
         onClicked: if (mouse.button === Qt.LeftButton) {
-                       if (selectedColorsArr.length != 4)
-                       {
+                       if(selectedColorsArr.length != 4){
                        selectedColorsArr.push(colors.indexOf(color.toString()));
                        selectedColorsRepeater.itemAt(selectedColorsArr.length - 1).color = color
-                       }
+                        }
                    }
         onEntered: upscaleAnimation.start()
         onExited: downscaleAnimation.start()
