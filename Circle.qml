@@ -20,15 +20,15 @@ Rectangle {
         id: mousearea
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
-        onClicked: if (mouse.button === Qt.LeftButton && root.parent.name === "row") {
+        onClicked: if (mouse.button === Qt.LeftButton) {
                        if (selectedColorsArr.length != 4)
                        {
                        selectedColorsArr.push(colors.indexOf(color.toString()));
                        selectedColorsRepeater.itemAt(selectedColorsArr.length - 1).color = color
                        }
                    }
-        onEntered: if(root.parent.name === "row") upscaleAnimation.start()
-        onExited: if(root.parent.name === "row") downscaleAnimation.start()
+        onEntered: upscaleAnimation.start()
+        onExited: downscaleAnimation.start()
         hoverEnabled: true
     }
 

@@ -77,6 +77,7 @@ Window {
          columns: 4
          rows: 10
          spacing: 2
+         enabled: false
 
          Repeater {
              id: prevGuessesRepeater
@@ -95,6 +96,7 @@ Window {
          columns: 4
          rows: 10
          spacing: 2
+         enabled: false
 
          Repeater {
              id: scoresGridRepeater
@@ -114,6 +116,7 @@ Window {
         anchors.topMargin: 20
         anchors.horizontalCenter: prevGuessesGrid.horizontalCenter
         spacing: 2
+        enabled: false
 
         Repeater {
             id: selectedColorsRepeater
@@ -174,7 +177,6 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 20
         spacing: 5
-        property var name: "row"
 
         Repeater {
             id: selectableColors
