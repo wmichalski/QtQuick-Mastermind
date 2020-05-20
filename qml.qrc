@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>Circle.qml</file>
         <file>Button.qml</file>
+        <file>UpscaleAnimation.qml</file>
+        <file>DownscaleAnimation.qml</file>
     </qresource>
 </RCC>

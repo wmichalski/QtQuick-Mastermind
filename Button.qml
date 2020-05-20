@@ -26,27 +26,26 @@ Rectangle {
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
         onClicked: if (mouse.button == Qt.LeftButton) {
-                       if (root.type == "RESET")
-                       {
+                       if (root.type === "RESET"){
                             for (var i = 0; i < 4; ++i)
-                            {
                                 selectedColorsRepeater.itemAt(i).color = defaultColor
-                            }
-                           selectedColorsArr = []
+                            selectedColorsArr = []
                        }
-                       if (root.type == "SUBMIT")
-                       {
-                           if (selectedColorsArr.length == 4)
-                           {
-                               for (var j = 0; j < 4; ++j)
-                               {
-                                   prevGuessesRepeater.itemAt(triesTaken * 4 + j).color = selectedColorsArr[j]
-                                   selectedColorsRepeater.itemAt(j).color = defaultColor
-                               }
-                              selectedColorsArr = []
-                              triesTaken += 1
-                           }
+                       if (root.type === "SUBMIT"){
+                           submitColors()
                        }
                    }
+        onEntered: if(root.type === "SUBMIT" && selectedColorsArr.length == 4 && gameOverText.state !== "gameover" || root.type === "RESET") upscaleAnimation.start()
+        onExited: downscaleAnimation.start()
+        hoverEnabled: true
+
+    }
+
+    UpscaleAnimation{
+        id: upscaleAnimation
+    }
+
+    DownscaleAnimation{
+        id: downscaleAnimation
     }
 }
