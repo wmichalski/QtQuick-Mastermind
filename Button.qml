@@ -28,14 +28,12 @@ Rectangle {
         onClicked: if (mouse.button == Qt.LeftButton) {
                        if (root.type === "RESET"){
                             for (var i = 0; i < 4; ++i)
-                                selectedColorsRepeater.itemAt(i).color = defaultColor
+                                selectedColorsRepeater.itemAt(i).color = selectedColorsRepeater.itemAt(i).defaultColor
                             selectedColorsArr = []
                        }
-                       if (root.type === "SUBMIT"){
-                           submitColors()
-                       }
+                       if (root.type === "SUBMIT") submitColors()
                    }
-        onEntered: if(root.type === "SUBMIT" && selectedColorsArr.length == 4 && gameOverText.state !== "gameover" || root.type === "RESET") upscaleAnimation.start()
+        onEntered: if(root.type === "SUBMIT" && selectedColorsArr.length === 4 && gameOverText.state !== "gameover" || root.type === "RESET") upscaleAnimation.start()
         onExited: downscaleAnimation.start()
         hoverEnabled: true
 

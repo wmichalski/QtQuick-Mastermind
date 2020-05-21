@@ -8,6 +8,7 @@ Window {
     minimumWidth: 386
     minimumHeight: 820
     color: "#efedd0"
+    title: qsTr("Mastermind")
 
     property var selectedColorsArr: []
     property var triesTaken: 0
@@ -18,7 +19,6 @@ Window {
         var arr = []
         for(var i = 0; i < 4; ++i)
             arr.push(Math.floor(Math.random() * colors.length))
-
         console.log(arr)
         return arr
     }
@@ -40,12 +40,13 @@ Window {
               set_correct[solution[i]]++
               set_selected[selectedColorsArr[i]]++
             }
-            for (var i = 0; i < colors.length; i++) {
-             misplaced+=Math.min(set_selected[i], set_correct[i]);
+            for (var i = 0; i < colors.length; i++){
+                misplaced+=Math.min(set_selected[i], set_correct[i]);
             }
+
             misplaced -= correct
 
-            if (correct === 4) {gameOverText.visible = true; gameOverText.text = "Congratulations, you won!"; gameOverText.state = "gameover"}
+            if (correct === 4) gameOverText.state = "gameover-won"
 
             for (var i = 0; i < 4; ++i){
                 if (correct){
@@ -61,9 +62,10 @@ Window {
            triesTaken += 1
 
            if (triesTaken === 10) {
-               gameOverText.visible = true; gameOverText.text = "You lost."; gameOverText.state = "gameover";
-               for(var i = 0; i < 4; i++)
+               gameOverText.state = "gameover-lost"
+               for(var i = 0; i < 4; i++){
                    selectedColorsRepeater.itemAt(i).color = colors[solution[i]]
+               }
            }
         }
     }
@@ -153,7 +155,7 @@ Window {
         anchors.horizontalCenter: selectable.horizontalCenter
         states: [
             State{
-                name: "gameover"
+                name: "gameover-won"
                 PropertyChanges {
                     target: submitButton;
                     enabled: false
@@ -165,6 +167,37 @@ Window {
                 PropertyChanges {
                     target: selectable;
                     enabled: false
+                }
+                PropertyChanges {
+                    target: gameOverText
+                    visible: true
+                }
+                PropertyChanges {
+                    target: gameOverText
+                    text: "Congratulations, you won!"
+                }
+            },
+            State{
+                name: "gameover-lost"
+                PropertyChanges {
+                    target: submitButton;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: resetButton;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: selectable;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: gameOverText
+                    visible: true
+                }
+                PropertyChanges {
+                    target: gameOverText
+                    text: "You lost."
                 }
             }
         ]

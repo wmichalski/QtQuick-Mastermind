@@ -22,8 +22,8 @@ Rectangle {
         acceptedButtons: Qt.LeftButton
         onClicked: if (mouse.button === Qt.LeftButton) {
                        if(selectedColorsArr.length != 4){
-                       selectedColorsArr.push(colors.indexOf(color.toString()));
-                       selectedColorsRepeater.itemAt(selectedColorsArr.length - 1).color = color
+                           selectedColorsArr.push(colors.indexOf(color.toString()));
+                           selectedColorsRepeater.itemAt(selectedColorsArr.length - 1).color = color
                         }
                    }
         onEntered: upscaleAnimation.start()
