@@ -12,6 +12,7 @@ Rectangle {
     property string type
     property string text
 
+    signal clicked
     color: defaultColor
 
     Text{
@@ -31,7 +32,7 @@ Rectangle {
                                 selectedColorsRepeater.itemAt(i).color = selectedColorsRepeater.itemAt(i).defaultColor
                             selectedColorsArr = []
                        }
-                       if (root.type === "SUBMIT") submitColors()
+                       if (root.type === "SUBMIT") windowroot.submitColors()
                    }
         onEntered: if(root.type === "SUBMIT" && selectedColorsArr.length === 4 && gameOverText.state !== "gameover" || root.type === "RESET") upscaleAnimation.start()
         onExited: downscaleAnimation.start()
